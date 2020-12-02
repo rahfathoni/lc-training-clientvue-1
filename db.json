@@ -99,7 +99,21 @@
       "gambar": "lontong-opor-ayam.jpg"
     }
   ],
-  "keranjangs": [],
+  "keranjangs": [
+    {
+      "jumlah_pemesanan": 2,
+      "keterangan": "-",
+      "products": {
+        "id": 6,
+        "kode": "K-06",
+        "nama": "Bakso",
+        "harga": 10000,
+        "is_ready": true,
+        "gambar": "bakso.jpg"
+      },
+      "id": 2
+    }
+  ],
   "pesanans": [
     {
       "nama": "Afif",
@@ -139,21 +153,8 @@
       "noMeja": "2",
       "keranjangs": [
         {
-          "jumlah_pemesanan": 2,
-          "keterangan": "-",
-          "products": {
-            "id": 1,
-            "kode": "K-01",
-            "nama": "Sate Ayam",
-            "harga": 16000,
-            "is_ready": true,
-            "gambar": "sate-ayam.jpg"
-          },
-          "id": 1
-        },
-        {
-          "jumlah_pemesanan": 1,
-          "keterangan": "-",
+          "jumlah_pemesanan": "10",
+          "keterangan": "dingin",
           "products": {
             "id": 3,
             "kode": "K-03",
@@ -162,7 +163,7 @@
             "is_ready": true,
             "gambar": "nasi-rames.jpg"
           },
-          "id": 2
+          "id": 1
         }
       ],
       "id": 2

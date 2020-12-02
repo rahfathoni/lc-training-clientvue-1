@@ -42,9 +42,22 @@ export default new Vuex.Store({
     addOrder (store, payload) {
       return server.post('/keranjangs', payload)
         .then(() => {
-          const cart = store.state.cart
-          cart.push(payload)
-          store.commit('SET_CART', cart)
+          return server.get('/keranjangs')
+        })
+        .then(({ data }) => {
+          store.commit('SET_CART', Object.values(data))
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    updateItem (store, payload) {
+      return server.put(`/keranjangs/${payload.id}`, payload)
+        .then(() => {
+          return server.get('/keranjangs')
+        })
+        .then(({ data }) => {
+          store.commit('SET_CART', Object.values(data))
         })
         .catch(err => {
           console.log(err)
