@@ -1,32 +1,43 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <Navbar class="p-cust"/>
+    <router-view class="p-cust mb-5"/>
   </div>
 </template>
 
+<script>
+import Navbar from './components/Navbar'
+import { mapState, mapActions } from 'vuex'
+export default {
+  name: 'App',
+  components: {
+    Navbar
+  },
+  computed: {
+    ...mapState(['foods'])
+  },
+  methods: {
+    ...mapActions(['readInitialFoods'])
+  },
+  created () {
+    if (this.foods.length === 0) {
+      this.readInitialFoods()
+    }
+  }
+}
+</script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
+  /* -webkit-font-smoothing: antialiased; */
+  /* -moz-osx-font-smoothing: grayscale; */
   text-align: center;
-  color: #2c3e50;
+  /* color: #2c3e50; */
+}
+.p-cust {
+  padding-left: 100px;
+  padding-right: 100px;
 }
 
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>
