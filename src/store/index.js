@@ -33,7 +33,6 @@ export default new Vuex.Store({
           return server.get('/keranjangs')
         })
         .then(({ data }) => {
-          console.log(data)
           store.commit('SET_CART', Object.values(data))
         })
         .catch(err => {
@@ -42,10 +41,8 @@ export default new Vuex.Store({
     },
     addOrder (store, payload) {
       return server.post('/keranjangs', payload)
-        .then(({ data }) => {
+        .then(() => {
           const cart = store.state.cart
-          console.log('masukk')
-          console.log(data)
           cart.push(payload)
           store.commit('SET_CART', cart)
         })
@@ -54,16 +51,43 @@ export default new Vuex.Store({
         })
     },
     deleteItem (store, payload) {
-      const cart = store.state.cart
-      for (let i = 0; i < cart.length; i++) {
-        if (cart[i].id === payload) {
-          cart.splice(i, 1)
-          break
-        }
-      }
-      return store.commit('SET_CART', cart)
+      return server.delete(`/keranjangs/${payload}`)
+        .then(() => {
+          const cart = store.state.cart
+          for (let i = 0; i < cart.length; i++) {
+            if (cart[i].id === payload) {
+              cart.splice(i, 1)
+              break
+            }
+          }
+          store.commit('SET_CART', cart)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    checkoutCart (store, payload) {
+      return server.post('/pesanans', payload)
+        .then(() => {
+          store.dispatch('resetCart')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    deletePerItem (store, payload) {
+      return server.delete(`/keranjangs/${payload}`)
+        .then(() => {
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     resetCart (store) {
+      const cart = store.state.cart
+      for (let i = 0; i < cart.length; i++) {
+        store.dispatch('deletePerItem', cart[i].id)
+      }
       return store.commit('SET_CART', [])
     }
   },

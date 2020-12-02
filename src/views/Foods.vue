@@ -17,7 +17,8 @@
       </div>
       <div class="row pt-3">
         <div class="col">
-          <FoodCard :data="foods" />
+          <FoodCard v-if="searchFood.length !== 0" :data="searchFood" />
+          <h1 v-else>"{{search}}" Tidak Ditemukan</h1>
         </div>
       </div>
     </div>
@@ -37,15 +38,15 @@ export default {
     FoodCard
   },
   computed: {
-    ...mapState(['foods'])
-    // searchFood () {
-    //   if (this.search === '') {
-    //     return this.foods
-    //   } else {
-    //     const fromSearch = this.foods.filter(datum => datum.name.toUpperCase().includes(this.search.toUpperCase()))
-    //     return fromSearch
-    //   }
-    // }
+    ...mapState(['foods']),
+    searchFood () {
+      if (this.search === '') {
+        return this.foods
+      } else {
+        const fromSearch = this.foods.filter(datum => datum.nama.toUpperCase().includes(this.search.toUpperCase()))
+        return fromSearch
+      }
+    }
   }
 }
 </script>

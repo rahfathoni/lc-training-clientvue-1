@@ -13,8 +13,17 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
-  name: 'Success'
+  name: 'Success',
+  computed: {
+    ...mapState(['foods'])
+  },
+  created () {
+    if (this.foods.length === 0) {
+      this.$router.push('/')
+    }
+  }
 }
 </script>
 
