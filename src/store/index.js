@@ -23,28 +23,35 @@ export default new Vuex.Store({
   },
   actions: {
     readInitialData (store, payload) {
-      return server.get('/foods')
+      return server.get('/products')
         .then(({ data }) => {
           store.commit('SET_FOODS', Object.values(data))
-          return server.get('/bestFoods')
+          return server.get('/best-products')
         })
         .then(({ data }) => {
           store.commit('SET_BESTFOODS', Object.values(data))
+          return server.get('/keranjangs')
+        })
+        .then(({ data }) => {
+          console.log(data)
+          store.commit('SET_CART', Object.values(data))
         })
         .catch(err => {
-          return console.log(err)
+          console.log(err)
         })
     },
     addOrder (store, payload) {
-      const cart = store.state.cart
-      if (cart.length === 0) {
-        payload.id = 1
-      } else {
-        const lastId = cart[cart.length - 1].id
-        payload.id = lastId + 1
-      }
-      cart.push(payload)
-      return store.commit('SET_CART', cart)
+      return server.post('/keranjangs', payload)
+        .then(({ data }) => {
+          const cart = store.state.cart
+          console.log('masukk')
+          console.log(data)
+          cart.push(payload)
+          store.commit('SET_CART', cart)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     deleteItem (store, payload) {
       const cart = store.state.cart

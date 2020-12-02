@@ -17,7 +17,7 @@
                     Keranjang <b-icon-bag /> <span class="text-cust">0</span>
                 </b-nav-item>
                 <b-nav-item v-else to="/keranjang">
-                    Keranjang <b-icon-bag /> <span class="text-cust">{{cartAmount}}</span>
+                    Keranjang <b-icon-bag /> <span class="text-cust">{{ cartAmount }}</span>
                 </b-nav-item>
             </b-navbar-nav>
             </b-collapse>
@@ -33,7 +33,7 @@ export default {
     cartAmount () {
       let result = 0
       for (let i = 0; i < this.cart.length; i++) {
-        result = result + this.cart[i].amount
+        result = result + parseInt(this.cart[i].jumlah_pemesanan)
       }
       return result
     }

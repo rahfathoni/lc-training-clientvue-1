@@ -17,7 +17,7 @@
       </div>
       <div class="row pt-3">
         <div class="col">
-          <FoodCard :data="searchFood" />
+          <FoodCard :data="foods" />
         </div>
       </div>
     </div>
@@ -37,15 +37,15 @@ export default {
     FoodCard
   },
   computed: {
-    ...mapState(['foods']),
-    searchFood () {
-      if (this.search === '') {
-        return this.foods
-      } else {
-        const fromSearch = this.foods.filter(datum => datum.name.toUpperCase().includes(this.search.toUpperCase()))
-        return fromSearch
-      }
-    }
+    ...mapState(['foods'])
+    // searchFood () {
+    //   if (this.search === '') {
+    //     return this.foods
+    //   } else {
+    //     const fromSearch = this.foods.filter(datum => datum.name.toUpperCase().includes(this.search.toUpperCase()))
+    //     return fromSearch
+    //   }
+    // }
   }
 }
 </script>
