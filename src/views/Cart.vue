@@ -86,6 +86,10 @@ export default {
         finalPrice: '',
         name: '',
         table: ''
+      },
+      edit: {
+        amount: '',
+        note: ''
       }
     }
   },

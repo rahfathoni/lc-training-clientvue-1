@@ -36,5 +36,27 @@
             "price" : "10000",
             "image" : "bakso.jpg"
         }
-    ]
+    ],
+    "bestFoods" : [
+        {
+            "id" : 1,
+            "name" : "Sate Ayam",
+            "price" : 16000,
+            "image" : "sate-ayam.jpg"
+        },
+        {
+            "id" : 2,
+            "name" : "Nasi Goreng Telur",
+            "price" : 14000,
+            "image" : "nasi-goreng-telor.jpg"
+        },
+        {
+            "id" : 5,
+            "name" : "Mie Goreng",
+            "price" : 13000,
+            "image" : "mie-goreng.jpg"
+        }
+    ],
+    "cart" : [],
+    "orderSuccess": []
 }

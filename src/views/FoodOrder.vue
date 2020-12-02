@@ -13,18 +13,20 @@
         <div v-if="datum.name !== ''" class="col-6 text-left">
         <h1>{{datum.name}}</h1>
         <hr />
-        <h2 class=" font-weight-light">Harga <span class=" font-weight-bold">Rp. {{datum.price}}</span></h2>
-        <br />
+        <h2 class=" font-weight-light pb-1">Harga <span class=" font-weight-bold">Rp. {{datum.price}}</span></h2>
         <form @submit.prevent="orderFood">
           <div class="form-group">
             <h5 for="amount" class=" font-weight-light pb-2">Jumlah Pesan</h5>
             <input id="amount" type="number" class="form-control" v-model="order.amount" min="1" required>
           </div>
-          <div class="form-group">
+          <div class="form-group mb-0 pb-0">
             <h5 for="note" class=" font-weight-light pb-2">Keterangan</h5>
             <textarea id="note" class="form-control" placeholder="seperti: pedas, nasi setengah..." v-model="order.note" />
           </div>
           <br />
+          <div class="form-group">
+            <h5 class=" font-weight-light pt-0">Total Harga : <span class=" font-weight-bold">Rp. {{order.amount * datum.price}}</span></h5>
+          </div>
           <button type="submit" class="btn btn-cust btn-cust:hover"><b-icon-cart /> Pesan</button>
         </form>
       </div>
@@ -74,10 +76,10 @@ export default {
       await this.calculatePrice()
       await this.addOrder({
         name: this.datum.name,
-        price: this.datum.price,
+        price: parseInt(this.datum.price),
         image: this.datum.image,
-        amount: this.order.amount,
-        totalPrice: this.order.totalPrice,
+        amount: parseInt(this.order.amount),
+        totalPrice: parseInt(this.order.totalPrice),
         note: this.order.note
       })
       await this.$toast.open({

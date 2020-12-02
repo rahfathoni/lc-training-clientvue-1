@@ -22,16 +22,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    readInitialFoods (store, payload) {
+    readInitialData (store, payload) {
       return server.get('/foods')
         .then(({ data }) => {
-          const getData = Object.values(data)
-          store.commit('SET_FOODS', getData)
-          const bestFoods = []
-          for (let i = 0; i < 3; i++) {
-            bestFoods.push(getData[i])
-          }
-          store.commit('SET_BESTFOODS', bestFoods)
+          store.commit('SET_FOODS', Object.values(data))
+          return server.get('/bestFoods')
+        })
+        .then(({ data }) => {
+          store.commit('SET_BESTFOODS', Object.values(data))
         })
         .catch(err => {
           return console.log(err)

@@ -2,26 +2,28 @@
   <div id="app">
     <Navbar class="p-cust"/>
     <router-view class="p-cust mb-5"/>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import { mapState, mapActions } from 'vuex'
 export default {
   name: 'App',
   components: {
-    Navbar
+    Navbar, Footer
   },
   computed: {
     ...mapState(['foods'])
   },
   methods: {
-    ...mapActions(['readInitialFoods'])
+    ...mapActions(['readInitialData'])
   },
   created () {
     if (this.foods.length === 0) {
-      this.readInitialFoods()
+      this.readInitialData()
     }
   }
 }

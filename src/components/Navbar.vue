@@ -14,10 +14,10 @@
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
                 <b-nav-item v-if="cart.length === 0" to="/keranjang" disabled>
-                    Keranjang <b-icon-bag /> <span class="text-cust">{{cart.length}}</span>
+                    Keranjang <b-icon-bag /> <span class="text-cust">0</span>
                 </b-nav-item>
                 <b-nav-item v-else to="/keranjang">
-                    Keranjang <b-icon-bag /> <span class="text-cust">{{cart.length}}</span>
+                    Keranjang <b-icon-bag /> <span class="text-cust">{{cartAmount}}</span>
                 </b-nav-item>
             </b-navbar-nav>
             </b-collapse>
@@ -29,7 +29,14 @@
 import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState(['cart'])
+    ...mapState(['cart']),
+    cartAmount () {
+      let result = 0
+      for (let i = 0; i < this.cart.length; i++) {
+        result = result + this.cart[i].amount
+      }
+      return result
+    }
   }
 }
 </script>
