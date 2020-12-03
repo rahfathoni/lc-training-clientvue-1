@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     ...mapMutations(['SET_ISLOGIN']),
-    ...mapActions(['readInitialData', 'logoutUser'])
+    ...mapActions(['logoutUser'])
   },
   created () {
     if (!localStorage.token) {
@@ -32,9 +32,6 @@ export default {
       if (this.$route.name !== 'Landing') {
         this.$router.push('/landing')
       }
-    }
-    if (this.foods.length === 0) {
-      this.readInitialData()
     }
   }
 }

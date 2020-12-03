@@ -32,14 +32,22 @@
 
 <script>
 import FoodCard from '../components/FoodCard'
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   name: 'Home',
   components: {
     FoodCard
   },
   computed: {
-    ...mapState(['bestFoods'])
+    ...mapState(['bestFoods', 'foods'])
+  },
+  methods: {
+    ...mapActions(['readInitialData'])
+  },
+  created () {
+    if (this.foods.length === 0) {
+      this.readInitialData()
+    }
   }
 }
 </script>

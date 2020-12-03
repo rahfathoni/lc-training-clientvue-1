@@ -11,7 +11,7 @@
       </div>
     </div>
     <div v-if="cart.length !== 0" class="row mt-3">
-    <table class="table table-hover table-bordered table-light table-responsive-md mb-5">
+    <table class="table table-hover table-responsive-md mb-5">
       <thead>
           <tr>
               <th scope="col" class="text-left">#</th>
@@ -19,7 +19,7 @@
               <th scope="col" class="text-left col-2">Makanan</th>
               <th scope="col" class="text-left">Keterangan</th>
               <th scope="col" class="text-left col-1">Jumlah</th>
-              <th scope="col" class="text-left col-2">Harga</th>
+              <th scope="col" class="text-left col-1">Harga</th>
               <th scope="col" class="text-left col-2">Total Harga</th>
               <th scope="col" class="text-center col-1">Ubah</th>
           </tr>
@@ -43,8 +43,8 @@
           <td v-else class=" text-left">
             {{ item.jumlah_pemesanan }}
           </td>
-          <td>Rp. {{ item.products.harga }}</td>
-          <td class=" font-weight-bold">Rp. {{ item.products.harga * item.jumlah_pemesanan }}</td>
+          <td class=" text-left">Rp. {{ item.products.harga }}</td>
+          <td class=" font-weight-bold text-left">Rp. {{ item.products.harga * item.jumlah_pemesanan }}</td>
           <td>
             <div class="row">
               <div class="col m-0 p-0">

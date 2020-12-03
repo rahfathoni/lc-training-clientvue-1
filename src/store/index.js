@@ -36,13 +36,15 @@ export default new Vuex.Store({
   },
   actions: {
     registerUser (store, payload) {
-      // ingat, email lowercase semua
       return server.post('/users', payload)
-        .then(() => {
+        .then(({ data }) => {
         })
         .catch(err => {
           console.log(err)
         })
+    },
+    checkRegisterUser (store, payload) {
+      return server.get(`/users?email=${payload.email}`)
     },
     loginUser (store, payload) {
       return server.get(`/users?email=${payload.email.toLowerCase()}&password=${payload.password}`)
@@ -54,7 +56,7 @@ export default new Vuex.Store({
             localStorage.setItem('token', `12${data[0].email}4${data[0].password}`)
             store.commit('SET_ISLOGIN', true)
             store.commit('SET_ISUSER', true)
-            store.commit('SET_EMAILLOGIN', data.email)
+            store.commit('SET_EMAILLOGIN', data[0].email)
           }
         })
         .catch(err => {
