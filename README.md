@@ -5,6 +5,13 @@
 npm install
 ```
 
+### Compiles and run with JSON file as fake Server
+...
+
+npm run dev
+...
+
+
 ### Compiles and hot-reloads for development
 ```
 npm run serve

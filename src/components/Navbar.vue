@@ -1,6 +1,6 @@
 <template>
     <div>
-        <b-navbar toggleable="md" class="pl-0 pr-0">
+        <b-navbar toggleable="lg" class="pl-0 pr-0">
             <b-navbar-brand>Resto Linov</b-navbar-brand>
 
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>

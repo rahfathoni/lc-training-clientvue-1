@@ -1,16 +1,16 @@
 <template>
-  <div class="pt-4">
+  <div class="pt-4 pb-3">
     <div class="row">
       <div class="col text-left">
         <h5 class=" font-weight-normal"><router-link class="text-dark" to="/">Home</router-link> / <router-link class="text-dark" to="/foods">Foods</router-link> / <span class=" font-weight-bold">Food Order</span></h5>
       </div>
     </div>
     <div class="row mt-3" v-if="datum !== ''">
-      <div class="col-6">
+      <div class="col-md-6">
         <img v-if="datum.nama !== ''" :alt="datum.gambar" :src="getImage(datum.gambar)"
       class="big-img-cust shadow">
       </div>
-        <div v-if="datum.nama !== ''" class="col-6 text-left">
+      <div v-if="datum.nama !== ''" class="col-md-6 text-left">
         <h1>{{datum.nama}}</h1>
         <hr />
         <h2 class=" font-weight-light pb-1">Harga <span class=" font-weight-bold">Rp. {{datum.harga}}</span></h2>

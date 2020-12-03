@@ -1,7 +1,7 @@
 <template>
   <div class="container pt-5">
     <div class="row">
-      <div class="col">
+      <div class="col-md">
         <img alt="menunggu" src="../assets/menunggu.png"
         class="med-img-cust text-center">
         <h1 class=" font-weight-bold">Sukses!!!</h1>

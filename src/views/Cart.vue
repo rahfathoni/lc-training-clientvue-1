@@ -15,7 +15,7 @@
       <thead>
           <tr>
               <th scope="col" class="text-left">#</th>
-              <th scope="col" class="text-left col-3">Foto</th>
+              <th scope="col" class="text-left col-2">Foto</th>
               <th scope="col" class="text-left col-2">Makanan</th>
               <th scope="col" class="text-left">Keterangan</th>
               <th scope="col" class="text-left col-1">Jumlah</th>
@@ -28,7 +28,7 @@
         <tr>
           <th scope="row">{{ i+1 }}</th>
           <td>
-            <img :src="getImage(item.products.gambar)" class="img-table-cust shadow" :alt="item.products.gambar">
+            <img :src="getImage(item.products.gambar)" class="shadow img-table-cust img-fluid" height="180px" width="180px" :alt="item.products.gambar">
           </td>
           <th class=" text-left">{{ item.products.nama }}</th>
           <td v-if="showInput.keterangan === true && showInput.itemIndex === i" class=" text-left">
@@ -61,9 +61,7 @@
     </table>
     </div>
     <div v-if="cart.length !== 0" class="row mt-1">
-      <div class="col"></div>
-      <div class="col"></div>
-      <div class="col">
+      <div class="col offset-md-8">
         <div class="row">
           <div class="col text-left">
             <h5>Total Harga </h5>

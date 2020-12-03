@@ -101,8 +101,21 @@
   ],
   "keranjangs": [
     {
-      "jumlah_pemesanan": 2,
+      "jumlah_pemesanan": "1",
       "keterangan": "pedas",
+      "products": {
+        "id": 6,
+        "kode": "K-06",
+        "nama": "Bakso",
+        "harga": 10000,
+        "is_ready": true,
+        "gambar": "bakso.jpg"
+      },
+      "id": 1
+    },
+    {
+      "jumlah_pemesanan": "3",
+      "keterangan": "-",
       "products": {
         "id": 4,
         "kode": "K-04",
@@ -111,7 +124,7 @@
         "is_ready": true,
         "gambar": "mie-ayam-bakso.jpg"
       },
-      "id": 1
+      "id": 2
     }
   ],
   "pesanans": [
@@ -179,6 +192,11 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "id": 2
+    },
+    {
+      "email": "budi@gmail.com",
+      "password": "admin",
+      "id": 3
     }
   ]
 }

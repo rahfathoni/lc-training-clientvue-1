@@ -1,5 +1,5 @@
 <template>
-    <div class="row row-cols-1 row-cols-3">
+    <div class="row row-cols-md-1 row-cols-md-3">
       <div class="col mb-4"
       v-for="(datum, i) in data" :key="i"
       >

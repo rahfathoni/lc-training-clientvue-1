@@ -5,9 +5,8 @@
         <h1>Selamat Datang di Resto Linov App</h1>
       </div>
     </div>
-    <div class="row">
-      <div class="col"></div>
-      <div class="col-8 border-success border shadow bg-light pt-2 pb-3">
+    <div class="row justify-content-center">
+      <div class="col-9 col-xl-6 border-success border shadow bg-light pt-2 pb-3">
         <div class="pt-3">
           <h3>Login</h3>
           <hr />
@@ -36,7 +35,6 @@
           </button>
         </h5>
       </div>
-      <div class="col"></div>
     </div>
     <ModalRegister ref="modalRegisterComponent"/>
   </div>
