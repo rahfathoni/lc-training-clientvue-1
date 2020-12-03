@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import server from '../api'
+import router from '../router'
 
 Vue.use(Vuex)
 
@@ -8,7 +9,10 @@ export default new Vuex.Store({
   state: {
     cart: [],
     foods: [],
-    bestFoods: []
+    bestFoods: [],
+    isLogin: false,
+    isUser: true,
+    emailLogin: ''
   },
   mutations: {
     SET_FOODS (state, payload) {
@@ -19,9 +23,49 @@ export default new Vuex.Store({
     },
     SET_BESTFOODS (state, payload) {
       state.bestFoods = payload
+    },
+    SET_ISLOGIN (state, payload) {
+      state.isLogin = payload
+    },
+    SET_ISUSER (state, payload) {
+      state.isUser = payload
+    },
+    SET_EMAILLOGIN (state, payload) {
+      state.emailLogin = payload
     }
   },
   actions: {
+    registerUser (store, payload) {
+      // ingat, email lowercase semua
+      return server.post('/users', payload)
+        .then(() => {
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    loginUser (store, payload) {
+      return server.get(`/users?email=${payload.email.toLowerCase()}&password=${payload.password}`)
+        .then(({ data }) => {
+          if (data.length === 0) {
+            store.commit('SET_ISUSER', false)
+          } else {
+            router.push('/')
+            localStorage.setItem('token', `12${data[0].email}4${data[0].password}`)
+            store.commit('SET_ISLOGIN', true)
+            store.commit('SET_ISUSER', true)
+            store.commit('SET_EMAILLOGIN', data.email)
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    logoutUser (store, payload) {
+      localStorage.clear()
+      store.commit('SET_ISLOGIN', false)
+      store.commit('SET_EMAILLOGIN', '')
+    },
     readInitialData (store, payload) {
       return server.get('/products')
         .then(({ data }) => {

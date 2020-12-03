@@ -13,12 +13,16 @@
 
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
+                <b-nav-text class="pr-1">
+                    Welcome <strong>{{emailLogin}}</strong>
+                </b-nav-text>
                 <b-nav-item v-if="cart.length === 0" to="/keranjang" disabled>
                     Keranjang <b-icon-bag /> <span class="text-cust">0</span>
                 </b-nav-item>
-                <b-nav-item v-else to="/keranjang">
+                <b-nav-item class="pr-2" v-else to="/keranjang">
                     Keranjang <b-icon-bag /> <span class="text-cust">{{ cartAmount }}</span>
                 </b-nav-item>
+                <button class="btn btn-cust btn-cust:hover py-0 my-0" type="button" @click.prevent="logout"><b-icon-door-closed-fill /> Logout</button>
             </b-navbar-nav>
             </b-collapse>
         </b-navbar>
@@ -26,16 +30,23 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapState(['cart']),
+    ...mapState(['cart', 'emailLogin']),
     cartAmount () {
       let result = 0
       for (let i = 0; i < this.cart.length; i++) {
         result = result + parseInt(this.cart[i].jumlah_pemesanan)
       }
       return result
+    }
+  },
+  methods: {
+    ...mapActions(['logoutUser']),
+    async logout () {
+      await this.logoutUser()
+      this.$router.push('/landing')
     }
   }
 }

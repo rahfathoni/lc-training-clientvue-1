@@ -101,7 +101,7 @@
   ],
   "keranjangs": [
     {
-      "jumlah_pemesanan": 2,
+      "jumlah_pemesanan": "7",
       "keterangan": "-",
       "products": {
         "id": 6,
@@ -167,6 +167,13 @@
         }
       ],
       "id": 2
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "test@gmail.com",
+      "password": "test"
     }
   ]
 }

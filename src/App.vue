@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navbar class="p-cust"/>
+    <Navbar v-if='isLogin' class="p-cust"/>
     <router-view class="p-cust mb-5"/>
     <Footer />
   </div>
@@ -9,19 +9,30 @@
 <script>
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions, mapMutations } from 'vuex'
 export default {
   name: 'App',
   components: {
     Navbar, Footer
   },
   computed: {
-    ...mapState(['foods'])
+    ...mapState(['foods', 'isLogin'])
   },
   methods: {
-    ...mapActions(['readInitialData'])
+    ...mapMutations(['SET_ISLOGIN']),
+    ...mapActions(['readInitialData', 'logoutUser'])
   },
   created () {
+    if (!localStorage.token) {
+      if (this.$route.name !== 'Landing') {
+        this.$router.push('/landing')
+      }
+    } else {
+      this.logoutUser()
+      if (this.$route.name !== 'Landing') {
+        this.$router.push('/landing')
+      }
+    }
     if (this.foods.length === 0) {
       this.readInitialData()
     }

@@ -5,6 +5,7 @@ import Foods from '../views/Foods.vue'
 import FoodOrder from '../views/FoodOrder.vue'
 import Cart from '../views/Cart.vue'
 import Success from '../views/Success.vue'
+import Landing from '../views/Landing.vue'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ const routes = [
     path: '/pesanan-sukses',
     name: 'Success',
     component: Success
+  },
+  {
+    path: '/landing',
+    name: 'Landing',
+    component: Landing
   }
 ]
 
