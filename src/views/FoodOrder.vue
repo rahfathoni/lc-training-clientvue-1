@@ -48,7 +48,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['foods'])
+    ...mapState(['foods', 'loginUser'])
   },
   methods: {
     ...mapActions(['readInitialData', 'addOrder']),
@@ -69,6 +69,7 @@ export default {
     },
     async orderFood () {
       await this.addOrder({
+        userId: this.loginUser.id,
         jumlah_pemesanan: parseInt(this.order.jumlah_pemesanan),
         keterangan: this.order.keterangan || '-',
         products: {

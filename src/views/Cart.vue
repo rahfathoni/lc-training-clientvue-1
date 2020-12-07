@@ -122,7 +122,7 @@ export default {
     }
   },
   computed: {
-    ...mapState(['cart']),
+    ...mapState(['cart', 'loginUser']),
     bayar () {
       let result = 0
       if (this.cart.length === 0) {
@@ -143,6 +143,7 @@ export default {
 
     async checkout () {
       await this.checkoutCart({
+        userId: this.loginUser.id,
         nama: this.pembayaran.nama,
         noMeja: this.pembayaran.noMeja,
         keranjangs: this.cart

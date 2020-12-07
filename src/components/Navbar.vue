@@ -14,7 +14,7 @@
             <!-- Right aligned nav items -->
             <b-navbar-nav class="ml-auto">
                 <b-nav-text class="pr-1">
-                    Welcome <strong>{{emailLogin}}</strong>
+                    Welcome <strong>{{loginUser.email}}</strong>
                 </b-nav-text>
                 <b-nav-item v-if="cart.length === 0" to="/keranjang" disabled>
                     Keranjang <b-icon-bag /> <span class="text-cust">0</span>
@@ -33,7 +33,7 @@
 import { mapState, mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapState(['cart', 'emailLogin']),
+    ...mapState(['cart', 'loginUser']),
     cartAmount () {
       let result = 0
       for (let i = 0; i < this.cart.length; i++) {

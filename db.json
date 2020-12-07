@@ -101,8 +101,9 @@
   ],
   "keranjangs": [
     {
-      "jumlah_pemesanan": "1",
-      "keterangan": "pedas",
+      "userId": 1,
+      "jumlah_pemesanan": 3,
+      "keterangan": "-",
       "products": {
         "id": 6,
         "kode": "K-06",
@@ -111,28 +112,17 @@
         "is_ready": true,
         "gambar": "bakso.jpg"
       },
-      "id": 1
-    },
-    {
-      "jumlah_pemesanan": "3",
-      "keterangan": "-",
-      "products": {
-        "id": 4,
-        "kode": "K-04",
-        "nama": "Mie Ayam Bakso",
-        "harga": 14000,
-        "is_ready": true,
-        "gambar": "mie-ayam-bakso.jpg"
-      },
       "id": 2
     }
   ],
   "pesanans": [
     {
+      "userId": 1,
       "nama": "Afif",
       "noMeja": "3",
       "keranjangs": [
         {
+          "userId": 1,
           "jumlah_pemesanan": "1",
           "keterangan": "Pedes",
           "products": {
@@ -146,6 +136,7 @@
           "id": 1
         },
         {
+          "userId": 1,
           "jumlah_pemesanan": "1",
           "keterangan": "Pedes",
           "products": {
@@ -162,10 +153,12 @@
       "id": 1
     },
     {
+      "userId": 1,
       "nama": "budi",
       "noMeja": "2",
       "keranjangs": [
         {
+          "userId": 1,
           "jumlah_pemesanan": "10",
           "keterangan": "dingin",
           "products": {
@@ -180,6 +173,42 @@
         }
       ],
       "id": 2
+    },
+    {
+      "userId": 2,
+      "nama": "agus",
+      "noMeja": "13",
+      "keranjangs": [
+        {
+          "userId": 2,
+          "jumlah_pemesanan": 1,
+          "keterangan": "-",
+          "products": {
+            "id": 1,
+            "kode": "K-01",
+            "nama": "Sate Ayam",
+            "harga": 16000,
+            "is_ready": true,
+            "gambar": "sate-ayam.jpg"
+          },
+          "id": 4
+        },
+        {
+          "userId": 2,
+          "jumlah_pemesanan": 1,
+          "keterangan": "-",
+          "products": {
+            "id": 2,
+            "kode": "K-02",
+            "nama": "Nasi Goreng Telur",
+            "harga": 14000,
+            "is_ready": true,
+            "gambar": "nasi-goreng-telor.jpg"
+          },
+          "id": 5
+        }
+      ],
+      "id": 3
     }
   ],
   "users": [
@@ -192,11 +221,6 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "id": 2
-    },
-    {
-      "email": "budi@gmail.com",
-      "password": "admin",
-      "id": 3
     }
   ]
 }

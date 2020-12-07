@@ -12,7 +12,10 @@ export default new Vuex.Store({
     bestFoods: [],
     isLogin: false,
     isUser: true,
-    emailLogin: ''
+    loginUser: {
+      id: '',
+      email: ''
+    }
   },
   mutations: {
     SET_FOODS (state, payload) {
@@ -30,8 +33,9 @@ export default new Vuex.Store({
     SET_ISUSER (state, payload) {
       state.isUser = payload
     },
-    SET_EMAILLOGIN (state, payload) {
-      state.emailLogin = payload
+    SET_LOGINUSER (state, payload) {
+      state.loginUser.email = payload.email
+      state.loginUser.id = payload.id
     }
   },
   actions: {
@@ -56,7 +60,11 @@ export default new Vuex.Store({
             localStorage.setItem('token', `12${data[0].email}4${data[0].password}`)
             store.commit('SET_ISLOGIN', true)
             store.commit('SET_ISUSER', true)
-            store.commit('SET_EMAILLOGIN', data[0].email)
+            store.commit('SET_LOGINUSER', {
+              id: data[0].id,
+              email: data[0].email
+            })
+            store.dispatch('readInitialData')
           }
         })
         .catch(err => {
@@ -66,7 +74,11 @@ export default new Vuex.Store({
     logoutUser (store, payload) {
       localStorage.clear()
       store.commit('SET_ISLOGIN', false)
-      store.commit('SET_EMAILLOGIN', '')
+      store.commit('SET_LOGINUSER', {
+        id: '',
+        email: ''
+      })
+      store.commit('SET_CART', [])
     },
     readInitialData (store, payload) {
       return server.get('/products')
@@ -76,7 +88,7 @@ export default new Vuex.Store({
         })
         .then(({ data }) => {
           store.commit('SET_BESTFOODS', Object.values(data))
-          return server.get('/keranjangs')
+          return server.get(`/keranjangs?userId=${store.state.loginUser.id}`)
         })
         .then(({ data }) => {
           store.commit('SET_CART', Object.values(data))
@@ -88,7 +100,7 @@ export default new Vuex.Store({
     addOrder (store, payload) {
       return server.post('/keranjangs', payload)
         .then(() => {
-          return server.get('/keranjangs')
+          return server.get(`/keranjangs?userId=${store.state.loginUser.id}`)
         })
         .then(({ data }) => {
           store.commit('SET_CART', Object.values(data))
@@ -100,7 +112,7 @@ export default new Vuex.Store({
     updateItem (store, payload) {
       return server.put(`/keranjangs/${payload.id}`, payload)
         .then(() => {
-          return server.get('/keranjangs')
+          return server.get(`/keranjangs?userId=${store.state.loginUser.id}`)
         })
         .then(({ data }) => {
           store.commit('SET_CART', Object.values(data))
