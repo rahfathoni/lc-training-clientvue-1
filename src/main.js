@@ -8,6 +8,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 import './css/style.css'
 import VueToast from 'vue-toast-notification'
 import 'vue-toast-notification/dist/theme-sugar.css'
+import './registerServiceWorker'
 
 Vue.use(VueToast)
 Vue.use(BootstrapVue)

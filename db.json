@@ -113,6 +113,34 @@
         "gambar": "bakso.jpg"
       },
       "id": 2
+    },
+    {
+      "userId": 3,
+      "jumlah_pemesanan": 1,
+      "keterangan": "-",
+      "products": {
+        "id": 2,
+        "kode": "K-02",
+        "nama": "Nasi Goreng Telur",
+        "harga": 14000,
+        "is_ready": true,
+        "gambar": "nasi-goreng-telor.jpg"
+      },
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "jumlah_pemesanan": 4,
+      "keterangan": "-",
+      "products": {
+        "id": 1,
+        "kode": "K-01",
+        "nama": "Sate Ayam",
+        "harga": 16000,
+        "is_ready": true,
+        "gambar": "sate-ayam.jpg"
+      },
+      "id": 4
     }
   ],
   "pesanans": [
@@ -221,6 +249,11 @@
       "email": "admin@gmail.com",
       "password": "admin",
       "id": 2
+    },
+    {
+      "email": "budi@gmail.com",
+      "password": "budi",
+      "id": 3
     }
   ]
 }
